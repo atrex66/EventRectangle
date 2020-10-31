@@ -3,7 +3,8 @@ Pygame rectangle extension class for mouse event handling
 
 usage:
 
-# if all EventRectangles shares the same function, argument is the calling object
+if all EventRectangles shares the same function, argument is the calling object
+
 def my_event_function(obj):
   if obj.name == 'name':
 
