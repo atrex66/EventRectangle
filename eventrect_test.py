@@ -1,4 +1,5 @@
 from eventrect import *
+import pygame
 
 pygame.init()
 
@@ -14,8 +15,8 @@ eclist = list()
 font = pygame.font.SysFont(pygame.font.get_default_font(), 32)
 
 
-def mouse_move(obj):
-    for f in ec.objects:
+def mouse_move(obj, event=None):
+    for f in ec.ev_objects:
         if f.counter > 0:
             pygame.draw.rect(screen, colors[f.counter], f)
             f.counter -= 1
@@ -27,6 +28,7 @@ def mouse_enter(obj):
     b.fill(pygame.Color('black'))
     screen.blit(b, (0, 40))
     screen.blit(a, (0, 40))
+    obj.counter = 254
     pass
 
 
@@ -38,16 +40,12 @@ def mouse_leave(obj):
     screen.blit(a, (0, 80))
 
 
-def on_click(obj):
+def on_click(obj, mousepos=(0, 0)):
     a = font.render('Clicked {0}'.format(obj.name), True, pygame.Color('red'))
     b = pygame.Surface(a.get_size())
     b.fill(pygame.Color('black'))
     screen.blit(b, (0, 0))
     screen.blit(a, (0, 0))
-    # global done
-    # print "MouseClick called on {0}".format(obj.name)
-    # done = True
-    pass
 
 
 colors = list()
@@ -69,7 +67,7 @@ for i in range(0, 800, grid[0]):
 # eventcontainer for screen1
 eclist.append(ec)
 
-print "data generated"
+print("data generated")
 while not done:
     events = pygame.event.get()
     for event in events:  # User did something
@@ -77,7 +75,7 @@ while not done:
             done = True  # Flag that we are done so we exit this loop
 
     #screen.fill(pygame.Color('black'))
-    #for l in ec.objects:
+    #for l in ec.ev_objects:
     #    pygame.draw.rect(screen, pygame.Color('green'), l, 1)
 
     # you can select the eventcontainer number to process

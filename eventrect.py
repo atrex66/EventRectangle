@@ -4,6 +4,7 @@
 import operator
 from pygame import *
 
+
 class EventRect(Rect):
 
     def __init__(self, name, x, y, w, h):
