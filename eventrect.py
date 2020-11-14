@@ -3,8 +3,6 @@
 
 import operator
 from pygame import *
-import guielements
-
 
 class EventRect(Rect):
 
